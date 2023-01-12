@@ -1,35 +1,48 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>ABSENCE FORM</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <center>
-            <h1>ABSENCE FORM</h1>
-            <table >
-                <tbody>
-                    <tr>
-                        <td>Semain</td>
-                        <td>Cin</td>
-                        <td>Nbr Abcence</td>
-                    </tr>
-                </tbody>
-            </table>
+<?php
+$action = "insert";
 
+include_once "../../Access_BD/Absence.php";
+if (isset($_GET['id'])) {
+    $res = find($_GET['id']);
+    $V = mysqli_fetch_array($res);
+    $action = "update";
+} else
+    $V = array("", "", "", "");
+?>
 
+<center>
+    <form action="../../Traitement/Absence.php?action=<?= $action ?>" method="post">
+        <table>
 
+            <tr>
+                <td>Semain</td>
+                <td><input type="text" name="semain" value="<?= $V[1] ?>"></td>
+            </tr>
+            <tr>
+                <td>Cne</td>
+                <td>
+                    <select name="cne">
+                        <?php
+                        $result = getCneList();
 
+                        while ($value=mysqli_fetch_assoc($result) ) {
+                            
+                            echo "<option value=".$value['cne'].">".$value['cne']."</option>";
+                        }
 
-
-        </center>
-    </body>
-</html>
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>NBR ABCENSE</td>
+                <td><input type="text" name="NBR_ABCENSE" value="<?= $V[2] ?>"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Envoyer"></td>
+                <td><input type="reset" value="Annuler"></td>
+            </tr>
+        </table>
+        <input type="hidden" name="id" value="<?= $V[0] ?>">
+    </form>
+</center>

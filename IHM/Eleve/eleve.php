@@ -1,14 +1,14 @@
 <?php
 include_once "../../Access_BD/Eleve.php";
 $res=all();
-var_dump($_GET);
-if(($_GET['action']=='absent')){
+
+if(isset($_GET['action'])&&($_GET['action']=='absent')){
     $abcent=GetAbsenctByEleve($_GET['id']);
 }
 
 ?>
 <center>
-    <h1>La liste des visiteurs</h1>
+    <h1>La liste des eleves</h1>
 <table border="1">
     <tr>
         <th>Cne</th>
@@ -33,8 +33,9 @@ if(($_GET['action']=='absent')){
 </table>
 
 <?php
-if(isset($_GET['action'])&&$_GET['action']=='absent')
-frontAbsencent($abcent);
+if(isset($_GET['action'])&&$_GET['action']=='absent'){
+    frontAbsencent($abcent);
+}
 ?>
 
 </center>

@@ -16,12 +16,13 @@
         <center>
            <a href=<?php  echo "IHM/Absence/absence.php" ?>>
             <h1>
-                Gestion des eleves
+            Gestion des d'absents
+                
             </h1>  
             </a>
             <a href=<?php  echo "IHM/Eleve/eleve.php" ?>>
             <h1>
-                Gestion des d'absents
+            Gestion des eleves 
             </h1>  
             </a>
             
