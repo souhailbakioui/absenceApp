@@ -22,8 +22,6 @@
                         <td>Cin</td>
                         <td>Nbr Abcence</td>
                     </tr>
-
-
                 </tbody>
             </table>
 

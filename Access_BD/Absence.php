@@ -23,9 +23,9 @@ $req="delete from absence where semaine='$id' and  cin ='$cin'";
 mysqli_query($link,$req);	
 }
 
-function find($id,$cin){
+function find($cin){
 Global $link;
-$req="select * from absence where id_visiteur='$id' and  cin ='$cin'";
+$req="select * from absence where   cin ='$cin'";
 return mysqli_query($link,$req);	
 	
 }
