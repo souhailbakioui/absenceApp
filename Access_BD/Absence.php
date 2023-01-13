@@ -11,16 +11,18 @@ $req="insert into absence(semaine,cne,nbr_abs)
 
 function update($data){
 Global $link;
+var_dump($data);
+die();
 $req="update absence set cne='{$data[1]}',
-                        nbr_abs='{$data[2]}' 
-						where semaine='{$data[0]}' and  cne ='$data[1]'";
-//die($req);
+        nbr_abs='{$data[2]}' 
+        where semaine='{$data[0]}' and  cne ='$data[1]'";
+
 	mysqli_query($link,$req);	
 }
 
-function delete($id,$cin){
+function delete($id){
 Global $link;
-$req="delete from absence where semaine='$id' and  cin ='$cin'";
+$req="delete from absence where  cne ='$id'";
 mysqli_query($link,$req);	
 }
 
