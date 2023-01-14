@@ -28,7 +28,7 @@ if(isset($_GET['action'])&&($_GET['action']=='absent')){
         <td><a href="form.php?action=update&id=<?=$V[0]?>">
         <img src="../../Icons/icons8-edit-48.png" style="height: 30px;">
     </a></td>
-        <td><a href="../../Traitement/Eleve.php?action=delete&id=<?=$V[0]?>&nom=<?=$V[1]?>">
+        <td><a href="?action=absen=delete&id=<?=$V[0]?>&nom=<?=$V[1]?>">
         <img src="../../Icons/icons8-remove-32.png"></a></td>
         <td><a href="?action=absent&id=<?=$V[0]?>&nom=<?=$V[1]?>">Absence</a></td>
     </tr>
@@ -39,6 +39,10 @@ if(isset($_GET['action'])&&($_GET['action']=='absent')){
             <h3>retour</h3>
         </a>
 <?php
+if(isset($_GET['nom'])){
+
+    Confirmation($_GET['id'],$_GET['nom']);
+}
 if(isset($_GET['action'])&&$_GET['action']=='absent'){
     frontAbsencent($abcent);
 }

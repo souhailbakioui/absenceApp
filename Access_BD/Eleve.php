@@ -109,13 +109,16 @@ function Confirmation($id, $nom)
 {
 
 ?>
-	<form action="../Traitement/Eleve.php?action=delete&id=<?= $id ?>" method="post">
+	<form action="../../Traitement/Eleve.php?action=delete&id=<?= $id ?>" method="post">
 		êtes-vous sûr de vouloir supprimer l'élève <strong><?= $nom ?></strong>
 		Oui <input type="radio" name="conf" value="oui">
 		Non <input type="radio" name="conf" value="non" checked>
 		<input type="submit" value="Ok">
+		<input type="hidden" name="action" value="delete">
+		<input type="hidden" name="id" value=<?php echo $id?>>
+		<input type="hidden" name="nom" value=<?php echo $nom?>>
 	</form>
 
-<?php die("die from confirmation");
+<?php 
 }
 ?>

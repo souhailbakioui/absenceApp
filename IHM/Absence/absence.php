@@ -4,7 +4,7 @@ $res = all();
 if ((isset($_GET['submitSemain']) && $_GET['action'] == 'shearch')) {
     $abcent = getAbsenctBySemain($_GET['nbrSmaine']);
 }
-var_dump($_GET);
+
 
 ?>
 <center>

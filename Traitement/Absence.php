@@ -15,15 +15,17 @@ if((!isset($_GET['action'])&& !isset($_POST['action']))|| (isset($_POST['conf'])
 
 else{
 
-if(isset($_GET['action']))
+if(isset($_GET['action']) || isset($_POST['action'])){
+
+
 	switch($_GET['action'])
 	{
 		case 'insert': insert(array_values($_POST)); break;
 		case 'update': update(array_values($_POST)); break;
-		case 'delete': delete($_GET['id'],$_GET['semaine']); break;
 	}
 	if(isset($_POST['action']))delete($_POST['id'],$_POST['semain']);
-	header('Location:../IHM/Absence/absence.php');
+}
+header('Location:../IHM/Absence/absence.php');
 }
 
 ?>

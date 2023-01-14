@@ -17,12 +17,12 @@ if (isset($_GET['id'])) {
 
             <tr>
                 <td>Semain</td>
-                <td><input type="text" name="semain" value="<?= $V[0] ?>" <?php echo  $action=="update" ?  "disabled" :"" ?>></td>
+                <td><input type="text" name="semain" value="<?= $V[0] ?>"></td>
             </tr>
             <tr>
                 <td>Cne</td>
                 <td>
-                    <select name="cne" <?php echo  $action=="update" ?  "disabled" :"" ?>>
+                    <select name="id">
                         <?php
                         $result = getCneList();
 
@@ -44,6 +44,5 @@ if (isset($_GET['id'])) {
                 <td><input type="reset" value="Annuler"></td>
             </tr>
         </table>
-        <input type="hidden" name="id" value="<?= $V[0] ?>">
     </form>
 </center>
