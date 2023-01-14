@@ -1,4 +1,5 @@
 <?php
+Global $confitmation;
 include_once("Connexion.php");
 $link=Connexion("tp_3");
 function insert($data){
@@ -11,18 +12,18 @@ $req="insert into absence(semaine,cne,nbr_abs)
 
 function update($data){
 Global $link;
-var_dump($data);
-die();
-$req="update absence set cne='{$data[1]}',
-        nbr_abs='{$data[2]}' 
-        where semaine='{$data[0]}' and  cne ='$data[1]'";
+
+$req="update absence set
+    nbr_abs='{$data[2]}' 
+    where semaine='{$data[0]}'
+     and  cne ='$data[1]'";
 
 	mysqli_query($link,$req);	
 }
 
-function delete($id){
+function delete($id,$semain){
 Global $link;
-$req="delete from absence where  cne ='$id'";
+$req="delete from absence where  cne ='$id' and semaine='$semain'";
 mysqli_query($link,$req);	
 }
 
@@ -77,5 +78,22 @@ function getCneList()
 Global $link;
 $req="select cne from  eleve ";
 return mysqli_query($link,$req);
+}
+function Confirmation($id, $semain)
+{
+?>
+	<form action="../../Traitement/Absence.php" method="POST">
+		êtes-vous sûr de vouloir <span style='color:red'> supprimer </span> l'absence  de la semain  <strong><?= $semain ?></strong>
+        de l'eleve qui porte le code <?php echo  $id ?> <br>
+		Oui <input type="radio" name="conf" value="oui">
+		Non <input type="radio" name="conf" value="non" checked>
+		<input type="submit" value="Ok">
+		<input type="hidden" name="action" value="delete">
+		<input type="hidden" name="id" value=<?php echo $id?>>
+		<input type="hidden" name="semain" value=<?php echo $semain?>>
+		
+	</form>
+
+<?php 
 }
 ?>

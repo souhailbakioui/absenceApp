@@ -4,6 +4,7 @@ $res = all();
 if ((isset($_GET['submitSemain']) && $_GET['action'] == 'shearch')) {
     $abcent = getAbsenctBySemain($_GET['nbrSmaine']);
 }
+var_dump($_GET);
 
 ?>
 <center>
@@ -24,14 +25,15 @@ if ((isset($_GET['submitSemain']) && $_GET['action'] == 'shearch')) {
                 <td><a href="form.php?action=update&id=<?= $V[1] ?>">
                 <img src="../../Icons/icons8-edit-48.png" style="height: 30px;">
             </a></td>
-                <td><a href="../../Traitement/Absence.php?action=delete&id=<?= $V[1] ?>&nom=<?= $V[0] ?>">
+                <td>
+                    <a href="../../Traitement/Absence.php?id=<?= $V[1] ?>&semaine=<?= $V[0] ?>">
                         <img src="../../Icons/icons8-remove-32.png">
                     </a>
                 </td>
             </tr>
         <?php } ?>
     </table>
-        <a href="../../index.php">
+        <a href="../../">
             <img src="../../Icons/icons8-home-page-100.png" style="height: 50px;">
             <h3>retour</h3>
         </a>
@@ -46,7 +48,12 @@ if ((isset($_GET['submitSemain']) && $_GET['action'] == 'shearch')) {
             </tr>
         </table>
     </form>
+
     <?php
+    if(isset($_GET['semaine'])){
+
+        Confirmation($_GET['id'],$_GET['semaine']);
+    }
     if (isset($_GET['submitSemain']) && $_GET['action'] == 'shearch') {
         getFrontTable($abcent);
     }

@@ -3,6 +3,7 @@ $action = "insert";
 
 include_once "../../Access_BD/Absence.php";
 if (isset($_GET['id'])) {
+    
     $res = find($_GET['id']);
     $V = mysqli_fetch_array($res);
     $action = "update";
@@ -16,12 +17,12 @@ if (isset($_GET['id'])) {
 
             <tr>
                 <td>Semain</td>
-                <td><input type="text" name="semain" value="<?= $V[1] ?>"></td>
+                <td><input type="text" name="semain" value="<?= $V[0] ?>" <?php echo  $action=="update" ?  "disabled" :"" ?>></td>
             </tr>
             <tr>
                 <td>Cne</td>
                 <td>
-                    <select name="cne">
+                    <select name="cne" <?php echo  $action=="update" ?  "disabled" :"" ?>>
                         <?php
                         $result = getCneList();
 

@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
         <table>
             <tr>
                 <td>Cne</td>
-                <td><input type="text" name="cne" value="<?= $V[1] ?>"></td>
+                <td><input type="text" name="cne" value="<?= $V[0] ?>"></td>
             </tr>
             <tr>
                 <td>Nom</td>

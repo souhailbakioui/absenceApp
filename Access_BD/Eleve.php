@@ -12,10 +12,12 @@ function insert($data)
 
 function update($data)
 {
+	// var_dump($data);
+	// die();
 	global $link;
-	$req = "update eleve set nom='{$data[0]}',prenom='{$data[1]}',
-                        groupe='{$data[2]}' 
-						   where cne='{$data[3]}'";
+	$req = "update eleve set nom='{$data[1]}',prenom='{$data[2]}',
+                        groupe='{$data[3]}' 
+						   where cne='{$data[0]}'";
 	mysqli_query($link, $req);
 }
 
